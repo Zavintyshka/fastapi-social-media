@@ -1,0 +1,6 @@
+__pycache__
+.venv
+.idea
+Legacy/
+app/.env
+test.py
