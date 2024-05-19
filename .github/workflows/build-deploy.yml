@@ -10,6 +10,11 @@ jobs:
       DB_NAME: ${{secrets.DB_NAME}}
       ALGORITHM: ${{secrets.ALGORITHM}}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      DB_USER_TEST: ${{secrets.DB_USER_TEST}}
+      DB_PASSWORD_TEST: ${{secrets.DB_PASSWORD_TEST}}
+      HOST_TEST: ${{secrets.HOST_TEST}}
+      DB_NAME_TEST: ${{secrets.DB_NAME_TEST}}
+      
     runs-on: ubuntu-latest
     steps:
       - name: pulling get repo
