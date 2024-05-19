@@ -1,0 +1,10 @@
+name: Build and Deploy API
+on: [ "push", "pull_request" ]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling get repo
+        uses: actions/checkout@v4
+      - name: say hi to Vadim
+        run: echo "Hello, Vadim!"
