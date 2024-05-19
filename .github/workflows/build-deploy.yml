@@ -14,3 +14,5 @@ jobs:
         run: python3 -m pip install --upgrade pip
       - name: install dependencies from requirements.txt
         run: pip install -r requirements.txt
+      - name: run pytest tests
+        run: pytest -v --disable-warnings
