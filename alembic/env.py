@@ -4,15 +4,29 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+from app.settings import TEST_MODE
 from app.models import Base
 
-from app.settings import *
+from app.settings import settings
+from tests.settings import settings as t_settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+if TEST_MODE:
+    DB_USER = t_settings.DB_USER_TEST
+    DB_PASSWORD = t_settings.DB_PASSWORD_TEST
+    HOST = t_settings.HOST_TEST
+    DB_NAME = t_settings.DB_NAME_TEST
+else:
+    DB_USER = settings.DB_USER
+    DB_PASSWORD = settings.DB_PASSWORD_TEST
+    HOST = settings.HOST_TEST
+    DB_NAME = settings.DB_NAME_TEST
+
 config.set_main_option("sqlalchemy.url",
-                       f"postgresql+psycopg://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.HOST}/{settings.DB_NAME}")
+                       f"postgresql+psycopg://{DB_USER}:{DB_PASSWORD}@{HOST}/{DB_NAME}")
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
