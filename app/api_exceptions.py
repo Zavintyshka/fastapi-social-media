@@ -3,7 +3,7 @@ from fastapi import HTTPException, status
 __all__ = ["UserNotFoundLoginException", "UserNotFoundException", "WrongPasswordException",
            "EmptyListOfPostsException", "EmptyListOfUsersException", "PostNotFoundException",
            "DeletePostException", "UpdatePostException", "UserAlreadyVotedException",
-           "LikeNotExistingPostException"]
+           "LikeNotExistingPostException", "UserAlreadyExistsException"]
 
 
 class UserNotFoundLoginException(HTTPException):
@@ -57,3 +57,8 @@ class LikeNotExistingPostException(HTTPException):
         super().__init__(status_code=status.HTTP_409_CONFLICT,
                          detail=f"User with id: {user_id} can't vote on post with id: {post_id} because it already"
                                 f"has like")
+
+
+class UserAlreadyExistsException(HTTPException):
+    def __init__(self, user_email):
+        super().__init__(status_code=status.HTTP_409_CONFLICT, detail=f"User with email: {user_email} already exists")

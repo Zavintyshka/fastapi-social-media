@@ -18,6 +18,8 @@ user_router = APIRouter(prefix="/users", tags=["User"])
 
 @user_router.post("/", response_model=ResponseUserModel, status_code=status.HTTP_201_CREATED)
 def create_user(user: CreateUserModel, db: Session = Depends(get_db)):
+    if db.query(User).filter(User.email == user.email).first():
+        raise UserAlreadyExistsException(user_email=user.email)
     user.password = hash_password(user.password)
     new_user = User(**dict(user))
     db.add(new_user)
