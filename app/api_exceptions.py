@@ -56,7 +56,7 @@ class LikeNotExistingPostException(HTTPException):
     def __init__(self, user_id: int, post_id: int):
         super().__init__(status_code=status.HTTP_409_CONFLICT,
                          detail=f"User with id: {user_id} can't vote on post with id: {post_id} because it already"
-                                f"has like")
+                                f" has like")
 
 
 class UserAlreadyExistsException(HTTPException):
