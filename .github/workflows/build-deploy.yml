@@ -1,7 +1,14 @@
 name: Build and Deploy API
 on: [ "push", "pull_request" ]
 jobs:
-  job1:
+  fast-api-server-job:
+    env:
+      DB_USER: ${{secrets.DB_USER}}
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      HOST: ${{secrets.HOST}}
+      DB_NAME: ${{secrets.DB_NAME}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
     runs-on: ubuntu-latest
     steps:
       - name: pulling get repo
