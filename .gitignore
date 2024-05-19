@@ -4,6 +4,7 @@ __pycache__
 Legacy/
 envs_for_docker/
 app/.env
+tests/.env
 test.py
 docker-compose.yml
 Dockerfile
