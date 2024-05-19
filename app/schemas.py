@@ -21,6 +21,7 @@ class CreateUserModel(UserBaseModel):
 
 
 class ResponseUserModel(BaseModel):
+    id: int
     email: EmailStr
     firstname: str
     lastname: str

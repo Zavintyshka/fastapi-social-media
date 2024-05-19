@@ -16,7 +16,7 @@ __all__ = ["auth_router"]
 auth_router = APIRouter(tags=["Authentication"])
 
 
-@auth_router.post("/login", response_model=Token)
+@auth_router.post("/login/", response_model=Token)
 def login(user_credential: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     email, password = user_credential.username, user_credential.password
     user = db.query(User).filter(User.email == email).first()
