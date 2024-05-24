@@ -20,3 +20,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/")
+def hello():
+    return {"message": "Hello World!"}

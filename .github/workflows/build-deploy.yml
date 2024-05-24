@@ -46,7 +46,7 @@ jobs:
       - name: run pytest tests
         run: pytest -v --disable-warnings
 
-  test-job:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
@@ -56,4 +56,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
-          script: cd ~/Desktop && mkdir hello_world
+          script: cd ~ && ./rebuild_project.sh
