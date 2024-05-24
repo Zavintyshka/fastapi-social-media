@@ -47,6 +47,7 @@ jobs:
         run: pytest -v --disable-warnings
 
   deploy:
+    needs: fast-api-server-job
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
