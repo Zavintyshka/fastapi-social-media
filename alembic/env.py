@@ -21,9 +21,9 @@ if TEST_MODE:
     DB_NAME = t_settings.DB_NAME_TEST
 else:
     DB_USER = settings.DB_USER
-    DB_PASSWORD = settings.DB_PASSWORD_TEST
-    HOST = settings.HOST_TEST
-    DB_NAME = settings.DB_NAME_TEST
+    DB_PASSWORD = settings.DB_PASSWORD
+    HOST = settings.HOST
+    DB_NAME = settings.DB_NAME
 
 config.set_main_option("sqlalchemy.url",
                        f"postgresql+psycopg://{DB_USER}:{DB_PASSWORD}@{HOST}/{DB_NAME}")

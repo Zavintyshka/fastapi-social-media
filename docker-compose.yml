@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  fastapi_server:
+    build: .
+    depends_on:
+      - postgres_server
+    container_name: social-media-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/source/app:ro
+    command: sh -c ". /source/venv/bin/activate && cd ./app && alembic upgrade head && uvicorn app.start_server:app --host 0.0.0.0 --port 8000"
+
+  postgres_server:
+    image: postgres:latest
+    container_name: postgres-db
+    env_file:
+      - ./envs_for_docker/postgres.env
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+
+networks:
+  default:
+    name: InnerServerNetwork
+    driver: bridge
